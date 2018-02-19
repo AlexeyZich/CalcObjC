@@ -62,10 +62,10 @@
 				5F7DF6E91F28F892008441A5 /* AppDelegate.m */,
 				5F7DF6EB1F28F892008441A5 /* ViewController.h */,
 				5F7DF6EC1F28F892008441A5 /* ViewController.m */,
-				5F7DF6EE1F28F892008441A5 /* Main.storyboard */,
 				5F7DF6F11F28F892008441A5 /* Assets.xcassets */,
 				5F7DF6F31F28F892008441A5 /* LaunchScreen.storyboard */,
 				5F7DF6F61F28F892008441A5 /* Info.plist */,
+				5F7DF6EE1F28F892008441A5 /* Main.storyboard */,
 				5F7DF6E51F28F892008441A5 /* Supporting Files */,
 			);
 			path = Calculator;
