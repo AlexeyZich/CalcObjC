@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController {
+@interface ViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate> {
     
     IBOutlet UILabel *displayLabel;
     double x, y;
@@ -17,13 +17,19 @@
     
 }
 
+@property (nonatomic,retain) NSMutableArray *source;
+
 - (IBAction)clear:(id)sender;
 - (IBAction)clearAll:(id)sender;
 
 - (IBAction)digit:(id)sender;
 - (IBAction)operation:(id)sender;
 
--(IBAction)inverseSign:(id)sender;
+- (IBAction)inverseSign:(id)sender;
+@property (weak, nonatomic) IBOutlet UIPickerView *picker;
+@property (weak, nonatomic) IBOutlet UILabel *setNotation;
+- (IBAction)transfer:(id)sender;
+- (IBAction)switchEngineer:(id)sender;
 
 @end
 

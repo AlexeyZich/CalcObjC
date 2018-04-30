@@ -16,14 +16,69 @@ enum {
 };
 
 @interface ViewController ()
-
+{
+    NSArray* _pickerData;
+    NSMutableDictionary *dict;
+//    NSDictionary* selectedTranslate;
+}
 @end
 
 @implementation ViewController
+    @synthesize source;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    _pickerData = @[
+  @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16"],
+    @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16"]
+    ];
+    self.picker.dataSource = self;
+    self.picker.delegate = self;
+}
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [self.picker selectRow:9 inComponent:0 animated:YES];
+    [self.picker selectRow:9 inComponent:1 animated:YES];
+}
+// The number of columns of data
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 2;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    NSString *prev;
+    dict = [[NSMutableDictionary alloc] init];
+    if(component == 0) {
+        [dict setValue: _pickerData[component][row] forKey:@"fromTranslate"];
+        prev = _pickerData[component][row];
+        NSLog(@"%@", prev);
+        
+        
+    } else {
+        [dict setValue: _pickerData[component][row] forKey:@"toTranslate"];
+    }
+    self.setNotation.text = _pickerData[component][row];
+    NSLog(@"Dic %@", dict);
+}
+
+
+// The number of rows of data
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return 16;
+}
+
+// The data to return for the row and component (column) that's being passed in
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return _pickerData[component][row];
 }
 
 
@@ -85,14 +140,10 @@ enum {
                 break;
         }
     }
-    
     y = x;
-    
     operation = [sender tag];
-    
     enterFlag = YES;
     yFlag = YES;
-    
     [self calcScreen];
     
 }
@@ -100,7 +151,6 @@ enum {
 -(IBAction)inverseSign:(id)sender {
     
     x = -x;
-    
     [self calcScreen];
     
 }
@@ -110,8 +160,22 @@ enum {
     NSString *str = [NSString stringWithFormat: @"%g", x];
     [displayLabel setText:str];
     
-
-    
 }
+
+- (IBAction)transfer:(id)sender {
+    NSLog(@"Dictionary %@", dict);
+}
+
+- (IBAction)switchEngineer:(id)sender {
+    if ([sender isOn]) {
+        [self.picker setUserInteractionEnabled:YES];
+        [self.picker setAlpha:1];
+    } else {
+        [self.picker setUserInteractionEnabled:NO];
+        [self.picker setAlpha:.6];
+    }
+}
+
+
 
 @end
