@@ -24,15 +24,14 @@ enum {
 @end
 
 @implementation ViewController
-    @synthesize source;
+@synthesize source;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
     _pickerData = @[
-  @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16"],
-    @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16"]
+  @[@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16"],
+    @[@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16"]
     ];
     self.picker.dataSource = self;
     self.picker.delegate = self;
@@ -46,8 +45,17 @@ enum {
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-    [self.picker selectRow:9 inComponent:0 animated:YES];
-    [self.picker selectRow:9 inComponent:1 animated:YES];
+    [switchEngineer setOn:NO animated:YES];
+    if (switchEngineer.isOn == NO) {
+        [self.picker setUserInteractionEnabled:NO];
+        [self.picker setAlpha:.6];
+    }
+    else {
+        [self.picker setUserInteractionEnabled:YES];
+        [self.picker setAlpha:1];
+    }
+    [self.picker selectRow:8 inComponent:0 animated:NO];
+    [self.picker selectRow:8 inComponent:1 animated:NO];
 }
 // The number of columns of data
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -73,7 +81,7 @@ enum {
 
 // The number of rows of data
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return 16;
+    return 15;
 }
 
 // The data to return for the row and component (column) that's being passed in
@@ -166,8 +174,9 @@ enum {
     NSLog(@"Dictionary %@", dict);
 }
 
-- (IBAction)switchEngineer:(id)sender {
-    if ([sender isOn]) {
+- (IBAction)changeEngineer:(id)sender {
+    switchEngineer = (UISwitch *)sender;
+    if (switchEngineer.isOn) {
         [self.picker setUserInteractionEnabled:YES];
         [self.picker setAlpha:1];
     } else {
@@ -175,7 +184,5 @@ enum {
         [self.picker setAlpha:.6];
     }
 }
-
-
 
 @end
