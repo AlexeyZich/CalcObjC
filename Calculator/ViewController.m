@@ -54,6 +54,18 @@ enum {
 }
 
 - (void) viewWillAppear:(BOOL)animated {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *_value= [[NSUserDefaults standardUserDefaults] stringForKey:@"turnOnOff"];
+    if([_value isEqualToString:@"YES"]) {
+        switchEngineer.on = YES;
+    }
+    else {
+        switchEngineer.on = NO;
+    }
+    NSNumber *row1 = [defaults objectForKey:@"selectedFrom"];
+    NSNumber *row2 = [defaults objectForKey:@"selectedTo"];
+    NSInteger row3 = [row1 integerValue];
+    NSInteger row4 = [row2 integerValue];
     if (switchEngineer.isOn == NO) {
         [self.picker setUserInteractionEnabled:NO];
         [self.picker setAlpha:.6];
@@ -62,8 +74,8 @@ enum {
         [self.picker setUserInteractionEnabled:YES];
         [self.picker setAlpha:1];
     }
-    [self.picker selectRow:8 inComponent:0 animated:NO];
-    [self.picker selectRow:8 inComponent:1 animated:NO];
+    [self.picker selectRow:row3 inComponent:0 animated:NO];
+    [self.picker selectRow:row4 inComponent:1 animated:NO];
 }
 // The number of columns of data
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -74,13 +86,18 @@ enum {
     NSString *prev;
     dict = [[NSMutableDictionary alloc] init];
     if(component == 0) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [dict setValue: _pickerData[component][row] forKey:@"fromTranslate"];
         prev = _pickerData[component][row];
-        NSLog(@"%@", prev);
-        
+        [defaults setObject:prev forKey:@"fromT"];
+        [defaults setInteger:row forKey:@"selectedFrom"];
         
     } else {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [dict setValue: _pickerData[component][row] forKey:@"toTranslate"];
+        prev = _pickerData[component][row];
+        [defaults setObject:prev forKey:@"toT"];
+        [defaults setInteger:row forKey:@"selectedTo"];
     }
     self.setNotation.text = _pickerData[component][row];
     NSLog(@"Dic %@", dict);
@@ -187,7 +204,6 @@ enum {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:switchEngineer.isOn ? @"YES" : @"NO" forKey:@"turnOnOff"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    NSLog(@"%@", [defaults objectForKey:@"turnOnOff"]);
     if (switchEngineer.isOn) {
         [self.picker setUserInteractionEnabled:YES];
         [self.picker setAlpha:1];
