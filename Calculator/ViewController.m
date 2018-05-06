@@ -28,6 +28,15 @@ enum {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    NSString *_value= [[NSUserDefaults standardUserDefaults] stringForKey:@"turnOnOff"];
+    
+    if([_value isEqualToString:@"YES"]) {
+        switchEngineer.on = YES;
+    }
+    else {
+        switchEngineer.on = NO;
+    }
     // Do any additional setup after loading the view, typically from a nib.
     _pickerData = @[
   @[@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16"],
@@ -45,7 +54,6 @@ enum {
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-    [switchEngineer setOn:NO animated:YES];
     if (switchEngineer.isOn == NO) {
         [self.picker setUserInteractionEnabled:NO];
         [self.picker setAlpha:.6];
@@ -176,6 +184,10 @@ enum {
 
 - (IBAction)changeEngineer:(id)sender {
     switchEngineer = (UISwitch *)sender;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:switchEngineer.isOn ? @"YES" : @"NO" forKey:@"turnOnOff"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    NSLog(@"%@", [defaults objectForKey:@"turnOnOff"]);
     if (switchEngineer.isOn) {
         [self.picker setUserInteractionEnabled:YES];
         [self.picker setAlpha:1];
