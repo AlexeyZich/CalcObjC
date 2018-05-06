@@ -11,6 +11,27 @@
 @interface ViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate> {
     
     IBOutlet UILabel *displayLabel;
+    IBOutlet UIButton *plusButton;
+    IBOutlet UIButton *minusButton;
+    IBOutlet UIButton *multiplyButton;
+    IBOutlet UIButton *divideButton;
+    IBOutlet UIButton *plusminusButton;
+    IBOutlet UIButton *resButton;
+    IBOutlet UIButton *oneButton;
+    IBOutlet UIButton *twoButton;
+    IBOutlet UIButton *threeButton;
+    IBOutlet UIButton *fourButton;
+    IBOutlet UIButton *fiveButton;
+    IBOutlet UIButton *sixButton;
+    IBOutlet UIButton *sevenButton;
+    IBOutlet UIButton *eightButton;
+    IBOutlet UIButton *nineButton;
+    IBOutlet UIButton *aButton;
+    IBOutlet UIButton *bButton;
+    IBOutlet UIButton *cButton;
+    IBOutlet UIButton *dButton;
+    IBOutlet UIButton *eButton;
+    IBOutlet UIButton *fButton;
     double x, y;
     BOOL enterFlag, yFlag;
     NSInteger operation;

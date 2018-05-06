@@ -19,7 +19,6 @@ enum {
 {
     NSArray* _pickerData;
     NSMutableDictionary *dict;
-//    NSDictionary* selectedTranslate;
 }
 @end
 
@@ -33,11 +32,50 @@ enum {
     
     if([_value isEqualToString:@"YES"]) {
         switchEngineer.on = YES;
-    }
-    else {
+        plusButton.enabled = NO;
+        minusButton.enabled = NO;
+        resButton.enabled = NO;
+        multiplyButton.enabled = NO;
+        divideButton.enabled = NO;
+        plusminusButton.enabled = NO;
+        twoButton.enabled = NO;
+        threeButton.enabled = NO;
+        fourButton.enabled = NO;
+        fiveButton.enabled = NO;
+        sixButton.enabled = NO;
+        sevenButton.enabled = NO;
+        eightButton.enabled = NO;
+        nineButton.enabled = NO;
+        aButton.enabled = NO;
+        bButton.enabled = NO;
+        cButton.enabled = NO;
+        dButton.enabled = NO;
+        eButton.enabled = NO;
+        fButton.enabled = NO;
+    } else {
         switchEngineer.on = NO;
+        plusButton.enabled = YES;
+        minusButton.enabled = YES;
+        resButton.enabled = YES;
+        multiplyButton.enabled = YES;
+        divideButton.enabled = YES;
+        plusminusButton.enabled = YES;
+        twoButton.enabled = YES;
+        threeButton.enabled = YES;
+        fourButton.enabled = YES;
+        fiveButton.enabled = YES;
+        sixButton.enabled = YES;
+        sevenButton.enabled = YES;
+        eightButton.enabled = YES;
+        nineButton.enabled = YES;
+        aButton.enabled = NO;
+        bButton.enabled = NO;
+        cButton.enabled = NO;
+        dButton.enabled = NO;
+        eButton.enabled = NO;
+        fButton.enabled = NO;
     }
-    // Do any additional setup after loading the view, typically from a nib.
+    
     _pickerData = @[
   @[@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16"],
     @[@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16"]
@@ -58,9 +96,190 @@ enum {
     NSString *_value= [[NSUserDefaults standardUserDefaults] stringForKey:@"turnOnOff"];
     if([_value isEqualToString:@"YES"]) {
         switchEngineer.on = YES;
+        plusButton.enabled = NO;
+        minusButton.enabled = NO;
+        resButton.enabled = NO;
+        multiplyButton.enabled = NO;
+        divideButton.enabled = NO;
+        plusminusButton.enabled = NO;
+        twoButton.enabled = NO;
+        threeButton.enabled = NO;
+        fourButton.enabled = NO;
+        fiveButton.enabled = NO;
+        sixButton.enabled = NO;
+        sevenButton.enabled = NO;
+        eightButton.enabled = NO;
+        nineButton.enabled = NO;
+        aButton.enabled = NO;
+        bButton.enabled = NO;
+        cButton.enabled = NO;
+        dButton.enabled = NO;
+        eButton.enabled = NO;
+        fButton.enabled = NO;
+        NSString *_valueTranslate = [[NSUserDefaults standardUserDefaults] objectForKey:@"fromT"];
+        int aValue = [_valueTranslate intValue];
+//        NSLog(@"aValue %i", aValue);
+        switch (aValue) {
+            case 3:
+                twoButton.enabled = YES;
+                break;
+            case 4:
+                twoButton.enabled = YES;
+                threeButton.enabled = YES;
+                break;
+            case 5:
+                twoButton.enabled = YES;
+                threeButton.enabled = YES;
+                fourButton.enabled = YES;
+                break;
+            case 6:
+                twoButton.enabled = YES;
+                threeButton.enabled = YES;
+                fourButton.enabled = YES;
+                fiveButton.enabled = YES;
+                break;
+            case 7:
+                twoButton.enabled = YES;
+                threeButton.enabled = YES;
+                fourButton.enabled = YES;
+                fiveButton.enabled = YES;
+                sixButton.enabled = YES;
+                break;
+            case 8:
+                twoButton.enabled = YES;
+                threeButton.enabled = YES;
+                fourButton.enabled = YES;
+                fiveButton.enabled = YES;
+                sixButton.enabled = YES;
+                sevenButton.enabled = YES;
+                break;
+            case 9:
+                twoButton.enabled = YES;
+                threeButton.enabled = YES;
+                fourButton.enabled = YES;
+                fiveButton.enabled = YES;
+                sixButton.enabled = YES;
+                sevenButton.enabled = YES;
+                eightButton.enabled = YES;
+                break;
+            case 10:
+                twoButton.enabled = YES;
+                threeButton.enabled = YES;
+                fourButton.enabled = YES;
+                fiveButton.enabled = YES;
+                sixButton.enabled = YES;
+                sevenButton.enabled = YES;
+                eightButton.enabled = YES;
+                nineButton.enabled = YES;
+                break;
+            case 11:
+                twoButton.enabled = YES;
+                threeButton.enabled = YES;
+                fourButton.enabled = YES;
+                fiveButton.enabled = YES;
+                sixButton.enabled = YES;
+                sevenButton.enabled = YES;
+                eightButton.enabled = YES;
+                nineButton.enabled = YES;
+                aButton.enabled = YES;
+                break;
+            case 12:
+                twoButton.enabled = YES;
+                threeButton.enabled = YES;
+                fourButton.enabled = YES;
+                fiveButton.enabled = YES;
+                sixButton.enabled = YES;
+                sevenButton.enabled = YES;
+                eightButton.enabled = YES;
+                nineButton.enabled = YES;
+                aButton.enabled = YES;
+                bButton.enabled = YES;
+                break;
+            case 13:
+                twoButton.enabled = YES;
+                threeButton.enabled = YES;
+                fourButton.enabled = YES;
+                fiveButton.enabled = YES;
+                sixButton.enabled = YES;
+                sevenButton.enabled = YES;
+                eightButton.enabled = YES;
+                nineButton.enabled = YES;
+                aButton.enabled = YES;
+                bButton.enabled = YES;
+                cButton.enabled = YES;
+                break;
+            case 14:
+                twoButton.enabled = YES;
+                threeButton.enabled = YES;
+                fourButton.enabled = YES;
+                fiveButton.enabled = YES;
+                sixButton.enabled = YES;
+                sevenButton.enabled = YES;
+                eightButton.enabled = YES;
+                nineButton.enabled = YES;
+                aButton.enabled = YES;
+                bButton.enabled = YES;
+                cButton.enabled = YES;
+                dButton.enabled = YES;
+                break;
+            case 15:
+                twoButton.enabled = YES;
+                threeButton.enabled = YES;
+                fourButton.enabled = YES;
+                fiveButton.enabled = YES;
+                sixButton.enabled = YES;
+                sevenButton.enabled = YES;
+                eightButton.enabled = YES;
+                nineButton.enabled = YES;
+                aButton.enabled = YES;
+                bButton.enabled = YES;
+                cButton.enabled = YES;
+                dButton.enabled = YES;
+                eButton.enabled = YES;
+                break;
+            case 16:
+                twoButton.enabled = YES;
+                threeButton.enabled = YES;
+                fourButton.enabled = YES;
+                fiveButton.enabled = YES;
+                sixButton.enabled = YES;
+                sevenButton.enabled = YES;
+                eightButton.enabled = YES;
+                nineButton.enabled = YES;
+                aButton.enabled = YES;
+                bButton.enabled = YES;
+                cButton.enabled = YES;
+                dButton.enabled = YES;
+                eButton.enabled = YES;
+                fButton.enabled = YES;
+                break;
+            default:
+                break;
+        }
+        
     }
     else {
         switchEngineer.on = NO;
+        plusButton.enabled = YES;
+        minusButton.enabled = YES;
+        resButton.enabled = YES;
+        multiplyButton.enabled = YES;
+        divideButton.enabled = YES;
+        plusminusButton.enabled = YES;
+        twoButton.enabled = YES;
+        threeButton.enabled = YES;
+        fourButton.enabled = YES;
+        fiveButton.enabled = YES;
+        sixButton.enabled = YES;
+        sevenButton.enabled = YES;
+        eightButton.enabled = YES;
+        nineButton.enabled = YES;
+        aButton.enabled = NO;
+        bButton.enabled = NO;
+        cButton.enabled = NO;
+        dButton.enabled = NO;
+        eButton.enabled = NO;
+        fButton.enabled = NO;
     }
     NSNumber *row1 = [defaults objectForKey:@"selectedFrom"];
     NSNumber *row2 = [defaults objectForKey:@"selectedTo"];
@@ -77,7 +296,7 @@ enum {
     [self.picker selectRow:row3 inComponent:0 animated:NO];
     [self.picker selectRow:row4 inComponent:1 animated:NO];
 }
-// The number of columns of data
+
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 2;
 }
@@ -103,13 +322,10 @@ enum {
     NSLog(@"Dic %@", dict);
 }
 
-
-// The number of rows of data
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     return 15;
 }
 
-// The data to return for the row and component (column) that's being passed in
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     return _pickerData[component][row];
 }
