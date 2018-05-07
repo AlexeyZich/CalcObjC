@@ -94,6 +94,8 @@ enum {
 - (void) viewWillAppear:(BOOL)animated {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *_value= [[NSUserDefaults standardUserDefaults] stringForKey:@"turnOnOff"];
+    self.setNotation.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"fromT"];
+    [translateTo setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"toT"]];
     if([_value isEqualToString:@"YES"]) {
         switchEngineer.on = YES;
         plusButton.enabled = NO;
@@ -318,7 +320,9 @@ enum {
         [defaults setObject:prev forKey:@"toT"];
         [defaults setInteger:row forKey:@"selectedTo"];
     }
-    self.setNotation.text = _pickerData[component][row];
+//    self.setNotation.text = _pickerData[component][row];
+    self.setNotation.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"fromT"];
+     [translateTo setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"toT"]];
     NSLog(@"Dic %@", dict);
 }
 
@@ -359,7 +363,8 @@ enum {
         enterFlag = NO;
     }
     x = (10.0f * x) + [sender tag];
-    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:x forKey:@"digits"];
     
     [self calcScreen];
 }
@@ -427,6 +432,78 @@ enum {
         [self.picker setUserInteractionEnabled:NO];
         [self.picker setAlpha:.6];
     }
+}
+
+- (IBAction)translationNumberSystem:(id)sender {
+    NSString *_valueFrom = [[NSUserDefaults standardUserDefaults] objectForKey:@"fromT"];
+    NSString *_valueTranslate = [[NSUserDefaults standardUserDefaults] objectForKey:@"toT"];
+    NSNumber *digits = [[NSUserDefaults standardUserDefaults] objectForKey:@"digits"];
+    int val = [_valueFrom intValue];
+    if (val == 10) {
+        NSString *s = [self valueFrom:_valueFrom toTranslate:_valueTranslate insertDigits:digits];
+//        NSLog(@"%@", s);
+//        [displayLabel setText:str];
+        [displayLabel setText:s];
+    }
+//    else {
+//        int n = [_valueTranslate intValue];
+//        int toDecimal = 10;
+//        NSString *str = [digits stringValue];
+//        int len = [str length];
+//        for (int i = len - 1; i >= 0; i--) {
+//            NSLog(@"%@", [str substringFromIndex:i]);
+//        }
+//    }
+}
+
+-(NSString *)valueFrom:(NSString *)str1 toTranslate:(NSString *)str2 insertDigits:(NSNumber *)dig {
+    int n = [str2 intValue];
+    int d = [dig intValue];
+    NSString *result = @"";
+    NSString *s;
+    int r;
+    do {
+        r = d % n;
+        if(r > 9) {
+            switch (r) {
+                case 10:
+                    s = @"a";
+                    break;
+                case 11:
+                    s = @"b";
+                    break;
+                case 12:
+                    s = @"c";
+                    break;
+                case 13:
+                    s = @"d";
+                    break;
+                case 14:
+                    s = @"e";
+                    break;
+                case 15:
+                    s = @"f";
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            s = [NSString stringWithFormat:@"%i", r];
+        }
+        result = [result stringByAppendingString:s];
+        d = d / n;
+    } while (d > 0);
+    result = [self reverseString:result];
+    NSLog(@"%@", result);
+    return result;
+}
+
+-(NSString *)reverseString:(NSString *)string{
+    NSString *reverseString = [NSString new];
+    for (NSInteger i=string.length-1; i >- 1; i--) {
+        reverseString=[reverseString stringByAppendingFormat:@"%c",[string characterAtIndex:i]];
+    }
+    return reverseString;
 }
 
 @end

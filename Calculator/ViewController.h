@@ -36,6 +36,7 @@
     BOOL enterFlag, yFlag;
     NSInteger operation;
     IBOutlet UISwitch *switchEngineer;
+    __weak IBOutlet UILabel *translateTo;
 }
 
 @property (nonatomic,retain) NSMutableArray *source;
@@ -53,6 +54,7 @@
 
 - (IBAction)changeEngineer:(id)sender;
 
+- (IBAction)translationNumberSystem:(id)sender;
 
 @end
 
