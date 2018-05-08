@@ -32,6 +32,7 @@
     IBOutlet UIButton *dButton;
     IBOutlet UIButton *eButton;
     IBOutlet UIButton *fButton;
+    IBOutlet UIButton *convert;
     double x, y;
     BOOL enterFlag, yFlag;
     NSInteger operation;

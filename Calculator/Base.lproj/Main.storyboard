@@ -239,9 +239,6 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <state key="normal" title="A"/>
-                                                <connections>
-                                                    <action selector="digit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="50j-cz-RLB"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFK-0g-rcM">
                                                 <rect key="frame" x="198" y="156" width="58" height="58"/>
@@ -251,9 +248,6 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <state key="normal" title="B"/>
-                                                <connections>
-                                                    <action selector="digit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5dw-0V-OW6"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dS7-k5-jg8">
                                                 <rect key="frame" x="264" y="156" width="58" height="58"/>
@@ -263,9 +257,6 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <state key="normal" title="D"/>
-                                                <connections>
-                                                    <action selector="digit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DXX-2y-1s4"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ka-Il-MrP">
                                                 <rect key="frame" x="264" y="78" width="58" height="58"/>
@@ -275,11 +266,8 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <state key="normal" title="E"/>
-                                                <connections>
-                                                    <action selector="digit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jz1-aB-PB3"/>
-                                                </connections>
                                             </button>
-                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9h-dL-nEU">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9h-dL-nEU">
                                                 <rect key="frame" x="264" y="0.0" width="58" height="58"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="58" id="ghi-nb-UIG"/>
@@ -287,9 +275,6 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <state key="normal" title="F"/>
-                                                <connections>
-                                                    <action selector="digit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qdN-ho-hee"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pjw-6Z-s8X">
                                                 <rect key="frame" x="198" y="222" width="58" height="58"/>
@@ -299,9 +284,6 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <state key="normal" title="C"/>
-                                                <connections>
-                                                    <action selector="digit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uZm-aX-eRd"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRK-bG-zxM">
                                                 <rect key="frame" x="0.0" y="222" width="190" height="58"/>
@@ -502,6 +484,7 @@
                         <outlet property="aButton" destination="1bz-OU-YhG" id="Jat-Ya-qgx"/>
                         <outlet property="bButton" destination="bFK-0g-rcM" id="6YJ-mk-wJi"/>
                         <outlet property="cButton" destination="Pjw-6Z-s8X" id="v6S-aB-rz2"/>
+                        <outlet property="convert" destination="iRK-bG-zxM" id="jNb-Yu-Lbk"/>
                         <outlet property="dButton" destination="dS7-k5-jg8" id="xka-vM-4iH"/>
                         <outlet property="displayLabel" destination="er3-oL-fgu" id="kgQ-mL-geN"/>
                         <outlet property="divideButton" destination="NRg-Ni-MTl" id="xMH-g1-hqb"/>

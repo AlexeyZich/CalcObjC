@@ -52,6 +52,7 @@ enum {
         dButton.enabled = NO;
         eButton.enabled = NO;
         fButton.enabled = NO;
+        convert.enabled = YES;
     } else {
         switchEngineer.on = NO;
         plusButton.enabled = YES;
@@ -74,6 +75,7 @@ enum {
         dButton.enabled = NO;
         eButton.enabled = NO;
         fButton.enabled = NO;
+        convert.enabled = NO;
     }
     
     _pickerData = @[
@@ -118,9 +120,9 @@ enum {
         dButton.enabled = NO;
         eButton.enabled = NO;
         fButton.enabled = NO;
+        convert.enabled = YES;
         NSString *_valueTranslate = [[NSUserDefaults standardUserDefaults] objectForKey:@"fromT"];
         int aValue = [_valueTranslate intValue];
-//        NSLog(@"aValue %i", aValue);
         switch (aValue) {
             case 3:
                 twoButton.enabled = YES;
@@ -282,6 +284,7 @@ enum {
         dButton.enabled = NO;
         eButton.enabled = NO;
         fButton.enabled = NO;
+        convert.enabled = NO;
     }
     NSNumber *row1 = [defaults objectForKey:@"selectedFrom"];
     NSNumber *row2 = [defaults objectForKey:@"selectedTo"];
@@ -320,7 +323,6 @@ enum {
         [defaults setObject:prev forKey:@"toT"];
         [defaults setInteger:row forKey:@"selectedTo"];
     }
-//    self.setNotation.text = _pickerData[component][row];
     self.setNotation.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"fromT"];
      [translateTo setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"toT"]];
     NSLog(@"Dic %@", dict);
@@ -356,7 +358,6 @@ enum {
 }
 
 - (IBAction)digit:(id)sender {
-    
     if(enterFlag) {
         y = x;
         x = 0;
@@ -441,19 +442,46 @@ enum {
     int val = [_valueFrom intValue];
     if (val == 10) {
         NSString *s = [self valueFrom:_valueFrom toTranslate:_valueTranslate insertDigits:digits];
-//        NSLog(@"%@", s);
-//        [displayLabel setText:str];
         [displayLabel setText:s];
     }
-//    else {
-//        int n = [_valueTranslate intValue];
-//        int toDecimal = 10;
-//        NSString *str = [digits stringValue];
-//        int len = [str length];
-//        for (int i = len - 1; i >= 0; i--) {
-//            NSLog(@"%@", [str substringFromIndex:i]);
-//        }
-//    }
+    else {
+        int n = [_valueFrom intValue];
+        NSString *toDecimal = @"10";
+        int sum = 0;
+        NSString *str = [digits stringValue];
+        str = [self reverseString:str];
+        for(int i = 0 ;i < [str length]; i++) {
+            char number = [str characterAtIndex:i];
+            switch (number) {
+                case 'a':
+                    number = 10;
+                    break;
+                case 'b':
+                    number = 11;
+                    break;
+                case 'c':
+                    number = 12;
+                    break;
+                case 'd':
+                    number = 13;
+                    break;
+                case 'e':
+                    number = 14;
+                    break;
+                case 'f':
+                    number = 15;
+                    break;
+                default:
+                    break;
+            }
+            int num = atoi(&number);
+            sum += num * pow(n, i);
+        }
+        NSLog(@"%i", sum);
+        NSNumber *number = [NSNumber numberWithInt:sum];
+        NSString *s = [self valueFrom:toDecimal toTranslate:_valueTranslate insertDigits:number];
+        [displayLabel setText:s];
+    }
 }
 
 -(NSString *)valueFrom:(NSString *)str1 toTranslate:(NSString *)str2 insertDigits:(NSNumber *)dig {
